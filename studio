@@ -1,0 +1,158 @@
+# 1주차 3st app java
+public void OnNaverClickedBtn(View v) {
+        Intent naverOpen = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.naver.com"));
+        startActivity(naverOpen);
+    }
+    public void OnClickedCallBtn(View v){
+        Intent callIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("tel:21173044"));
+        startActivity(callIntent);
+    }
+    public void onToastMessageBtn(View v) {
+        Toast.makeText(this,"21173044",Toast.LENGTH_LONG).show();
+    }
+
+
+}
+__xml
+<Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="OnNaverClickedBtn"
+        android:text="네이버접속하기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.882" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="528dp"
+        android:onClick="OnClickedCallBtn"
+        android:text="전화걸기"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onToastMessageBtn"
+        android:text="메세지"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.561"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.152" />
+# 2주차 4st_study
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:onClick="onBtn"
+        android:text="버튼 위에 쓰여지는 글자"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"/>
+      
+      #java
+          @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void OnClickedNameBtn(View v) {
+        Toast.makeText(this,"21173044 김이영",Toast.LENGTH_LONG).show();
+    }
+}
+#5주차 5st_study xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+      <Button
+        android:id="@+id/imageBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="이미지 바꾸기"
+        android:onClick="onImageChangeBtn"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/catView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/pic1">
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/dogView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:srcCompat="@drawable/pic2">
+        </ImageView>
+    </FrameLayout>
+</LinearLayout>
+
+--java
+package com.example.a5st_app;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+public class MainActivity extends AppCompatActivity {
+    ImageView imageView1;
+    ImageView imageView2;
+
+    int imageIndex = 0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        imageView1 = findViewById(R.id.catView);
+        imageView2 = findViewById(R.id.dogView);
+
+    }
+    public void onImageChangeBtn(View V){
+        changImage();
+    }
+    private void changImage(){
+        if(imageIndex == 0)
+        {
+          imageView1.setVisibility(View. VISIBLE);
+          imageView2.setVisibility(View. INVISIBLE);
+          imageIndex = 1;
+        }
+        else if(imageIndex == 1)
+        {
+            imageView1.setVisibility(View. INVISIBLE);
+            imageView2.setVisibility(View. VISIBLE);
+            imageIndex = 0;
+        }
+    }
+}
