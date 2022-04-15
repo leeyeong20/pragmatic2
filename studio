@@ -156,3 +156,65 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+6주차 
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/et_id"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="아이디를 입력하시오">
+    </EditText>
+    <Button
+        android:id="@+id/btn_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="입력"/>
+
+
+
+</LinearLayout>
+
+## java
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity {
+    EditText editText;
+    Button btn;
+    int temp=0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        editText =findViewById(R.id.et_id);
+        btn = findViewById(R.id.btn_id);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (temp == 0) {
+                    editText.setText("21173044");
+                    temp = 1;
+                }
+                else if (temp == 1)
+                {
+                    editText.setText("김이영");
+                    temp = 0;
+                }
+            }
+        });
+    }
+}
